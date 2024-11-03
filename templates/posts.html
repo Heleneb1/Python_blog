@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- <div class="header">
+  <h2><a href=" /">HeleneB's Blog</a></h2>
+</div> -->
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h1>{{ posts.title }}</h1>
+      <h5>{{ posts.created_at }}</h5>
+      <div class="content">
+        <pre><code>{{ posts.content }}</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  padding: 20px;
+  background: #130101;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.header {
+  background-color: #065d54; /* Couleur de fond de l'en-tête */
+  color: white; /* Couleur du texte */
+  padding: 20px; /* Espacement interne */
+  text-align: center; /* Centrer le texte */
+}
+
+.header a {
+  color: white; /* Couleur du lien */
+  text-decoration: none; /* Pas de soulignement */
+  font-size: 3rem; /* Taille du texte */
+}
+
+.header a:hover {
+  text-decoration: underline; /* Souligner au survol */
+}
+
+.leftcolumn {
+  float: left;
+  width: 100%;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.content {
+  padding: 20px;
+}
+pre {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  overflow-x: auto;
+  font-family: "Courier New", Courier, monospace;
+}
+
+code {
+  color: rgb(1, 23, 55);
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 1em;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn,
+  .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+footer {
+  background: #065d54;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
