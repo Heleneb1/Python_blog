@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <h2>Confirmer la suppression</h2>
+  <p>Es-tu sûr(e) de vouloir supprimer ce post ?</p>
+  <p><strong>{{ post.title }}</strong></p>
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit">Confirmer la suppression</button>
+    <a href="{% url 'index' %}">Annuler</a>
+  </form>
+</div>
+{% endblock %}
