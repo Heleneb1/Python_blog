@@ -8,6 +8,7 @@ body {
   background: #130101;
   margin: 0;
   line-height: 1.6;
+  cursor: url("{% static 'assets/stylo.png' %}") 16 16, auto;
 }
 
 .header {

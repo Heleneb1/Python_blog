@@ -1,34 +1,33 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Mon Site{% endblock %}</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
-    {% block head %}{% endblock %}
-    <!-- Garder un bloc pour des scripts ou styles supplémentaires si nécessaire -->
-  </head>
-  <body>
-    <!-- En-tête du site -->
-    <div class="header">
-      <h2><a href="/">HeleneB's Blog</a></h2>
-    </div>
 
-    <!-- Contenu principal -->
-    <div class="content">
-      {% block content %}
-      <!-- Contenu spécifique à chaque page -->
-      {% endblock %}
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Mon Site{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  {% block head %}{% endblock %}
+  <!-- Garder un bloc pour des scripts ou styles supplémentaires si nécessaire -->
+</head>
 
-    <!-- Pied de page -->
-    <footer>
-      <div>&copy; 2024 HeleneB's Blog created with Pyton and Django</div>
-    </footer>
-  </body>
+<body>
+  <!-- En-tête du site -->
+  <div class="header">
+    <h2><a href="/index">HeleneB's Blog</a></h2>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="content">
+    {% block content %}
+    <!-- Contenu spécifique à chaque page -->
+    {% endblock %}
+  </div>
+
+  <!-- Pied de page -->
+  <footer>
+    <div>&copy; 2024 HeleneB's Blog created with Pyton and Django</div>
+  </footer>
+</body>
+
 </html>

@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'posts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'posts',
+    
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'posts.User'
+ # ajouter cette ligne nom du dossier suivi du nom du model
+#en cas d'erreur de migration supprimer les migrations manuellement sauf le fichier init.py puis faire python manage.py makemigrations et python manage.py migrate
+LOGIN_URL = 'login'
