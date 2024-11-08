@@ -4,11 +4,47 @@
 
 body {
   font-family: "Arial", sans-serif;
-  padding: 20px;
+  padding: 0;
   background: #130101;
   margin: 0;
   line-height: 1.6;
-  cursor: url("{% static 'assets/stylo.png' %}") 16 16, auto;
+}
+.home {
+  color: white;
+  display: flex;
+  gap: 48px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
+  border: 1px double white;
+}
+/* .row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+/* Sidebar */
+.sidebar {
+  height: 100%;
+
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #1d3030;
+  color: #ffffe6;
+  overflow-x: hidden;
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Contenu principal ajusté pour prendre en compte la sidebar */
+.content {
+  margin-left: 230px; /* Correspond à la largeur de la sidebar */
+  padding: 20px;
 }
 
 .header {
@@ -27,45 +63,32 @@ body {
 .header a:hover {
   text-decoration: underline;
 }
-
-.leftcolumn {
-  float: left;
-  width: 100%;
-}
-
-.card {
+.card,
+.container {
   background-color: white;
   padding: 20px;
   margin-top: 20px;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
+  margin-bottom: 7rem;
 }
-
+.introduction {
+  color: white;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  padding: 2rem;
+}
 .card:hover {
   transform: scale(1.02);
 }
 
-form .input-group {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.row {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.content {
-  padding: 20px;
+/* Sidebar Links */
+.sidebar a {
+  text-decoration: none;
+  color: #ffffe6;
+  display: block;
+  padding: 10px 0;
 }
 
 pre {
@@ -84,15 +107,20 @@ code {
   border-radius: 3px;
   font-size: 1em;
 }
-
+form .input-group {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 footer {
   background: #065d54;
   color: white;
   text-align: center;
   padding: 10px 0;
   position: fixed;
-  width: 100%;
+  width: calc(100% - 220px); /* Largeur du footer ajustée */
   bottom: 0;
+  margin-left: 220px;
 }
 
 /* Post Detail Styles */
@@ -148,12 +176,13 @@ footer {
 }
 h2 {
   color: #065d54;
-  box-shadow: #ddd;
+  font-style: italic;
 }
-a {
+/* a,
+.deconnection {
   color: #065d54;
   text-decoration: none;
-}
+} */
 /* Button Styles */
 .btn {
   padding: 0.5rem 2rem;
@@ -169,7 +198,15 @@ a {
   background-color: #065d54;
   color: white;
 }
+img.avatar-image {
+  display: flex;
+  justify-content: center;
+  height: 26rem;
 
+  margin: 1rem;
+  border: double 14px white;
+  padding: 1rem;
+}
 .btn-edit {
   background-color: #065d54;
   color: white;
@@ -197,7 +234,6 @@ a {
 .delete-form {
   display: inline;
 }
-
 /* Optional: Animation for buttons */
 .btn {
   position: relative;
@@ -222,11 +258,9 @@ a {
   height: 200px;
   opacity: 0;
 }
-
-/* Avatar Image */
-.avatar-image {
-  width: 100%;
-  height: auto;
+.profile_picture {
+  /* height: 200px; */
+  width: 200px;
   margin-bottom: 20px;
 }
 
@@ -257,5 +291,21 @@ a {
   .btn {
     width: 100%;
     justify-content: center;
+  }
+  .content {
+    margin-left: 0;
+  }
+  .sidebar {
+    width: 0;
+    display: none;
+  }
+  .home {
+    flex-direction: column;
+    height: 100%;
+    border: none;
+  }
+  footer {
+    width: 100%;
+    margin-left: 0;
   }
 }

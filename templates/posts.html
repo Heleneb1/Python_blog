@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% load posts_extras %}
+{% block content %}
 
 <!-- <div class="header">
   <h2><a href=" /">HeleneB's Blog</a></h2>
@@ -8,6 +10,10 @@
     <div class="card">
       <h1>{{ posts.title }}</h1>
       <h5>{{ posts.created_at }}</h5>
+      <p>Posté par : {% get_post_display user=user %}</p>
+      {% if posts.photo and posts.photo.image %}
+      <img src="{{ posts.photo.image.url }}" alt="{{ posts.photo.caption }}" style="max-width: 100%;">
+      {% endif %}
       <div class="content">
         <pre><code>{{ posts.content }}</code></pre>
       </div>

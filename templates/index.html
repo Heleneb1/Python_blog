@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load posts_extras %}
 {% block content %}
 
-<a href="{% url 'logout' %}">Se déconnecter</a>
+<!-- <form action="{% url 'logout' %}" method="post">
+  {% csrf_token %}
+  <button class="deconnection" type="submit">Se déconnecter</button>
+</form> -->
+
 
 {% if messages %}
 {% for message in messages %}
@@ -12,12 +17,27 @@
 {% endfor %}
 {% endif %}
 
-<div class="new-post">
+<!-- <div class="new-post">
   <a href="{% url 'create' %}" class="btn">Create a new post</a>
-</div>
+</div> -->
 
-<div class="row">
+<div class="home">
+
   <img src="{% static 'assets/avatar.jpg' %}" alt="avatar" class="avatar-image" />
+  <div class="introduction">
+    <h2>HeleneB's Blog</h2>
+    <p>Bienvenue sur ce blog,<br> un espace d'exploration et de partage d'idées,<br> où chaque pas compte pour avancer.
+    </p>
+    <p>Ce blog est dédié à mon parcours d'apprentissage en Python et Django. Ici, je partage des astuces, des projets,
+      et
+      des leçons tirées de mes expériences, un peu comme un journal de bord technique. Si toi aussi tu es passionné(e)
+      par
+      le développement web et curieux d'en apprendre plus sur ces technologies, j'espère que tu trouveras ici des
+      ressources utiles et inspirantes !</p>
+  </div>
+</div>
+<div class="row">
+
   <div class="leftcolumn">
     {% for post in posts reversed %}
     <div class="card">
@@ -25,6 +45,8 @@
         <h2>{{ post.title }}</h2>
         <h5>{{ post.created_at }}</h5>
         <p>{{ post.content|truncatewords:20 }}</p>
+        <p>Posté par : {% get_post_display user=user %}</p>
+
       </a>
       <div class="button-group">
         <a href="{% url 'update_post' pk=post.id %}" class="btn-edit">Edit</a>

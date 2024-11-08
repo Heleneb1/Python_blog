@@ -1,0 +1,44 @@
+# Environnement virtuel
+blog_env/
+venv/
+
+# Cache de Python
+__pycache__/
+*.py[cod]
+
+# Paramètres spécifiques à l'IDE
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Base de données SQLite (si tu utilises SQLite pour le développement)
+db.sqlite3
+
+# Fichiers de migration générés automatiquement par Django
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Fichiers de log
+*.log
+
+# Fichiers media et uploadés
+media/
+uploads/
+
+# Paramètres secrets ou spécifiques au déploiement
+.env
+.env.local
+.env.production
+.env.development
+
+# Fichiers compilés
+*.pyc
+
+# Fichiers de sauvegarde
+*.bak
+*.swp
+
+# Fichiers générés par Django pour les compilations (CSS/JS)
+staticfiles/
+static/

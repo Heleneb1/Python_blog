@@ -92,6 +92,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 12,
+        },
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -99,6 +102,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    {
+        'NAME': 'posts.validators.ContainsLetterValidator',
+    },
+    {
+        'NAME': 'posts.validators.ContainsNumberValidator',
+    },
+    # {
+    #     'NAME':'posts.validators.PostalCodeValidator',
+    # }
 ]
 
 
@@ -130,3 +142,9 @@ AUTH_USER_MODEL = 'posts.User'
  # ajouter cette ligne nom du dossier suivi du nom du model
 #en cas d'erreur de migration supprimer les migrations manuellement sauf le fichier init.py puis faire python manage.py makemigrations et python manage.py migrate
 LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'login'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR / 'media'  # Utilisation de BASE_DIR pour une meilleure portabilité
