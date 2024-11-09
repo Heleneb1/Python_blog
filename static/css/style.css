@@ -40,7 +40,7 @@ body {
 
 /* Contenu principal ajusté pour prendre en compte la sidebar */
 .content {
-  margin-left: 230px; /* Correspond à la largeur de la sidebar */
+  margin-left: 250px; /* Correspond à la largeur de la sidebar */
   padding: 20px;
 }
 
@@ -174,11 +174,18 @@ h2 {
   color: #065d54;
   font-style: italic;
 }
-/* a,
-.deconnection {
-  color: #065d54;
-  text-decoration: none;
-} */
+span {
+  color: #ddd;
+  font-style: italic;
+}
+.pagination a {
+  color: #ddd;
+}
+.num_pages {
+  color: #0aaca4;
+  font-weight: bold;
+  text-align: center;
+}
 /* Button Styles */
 .btn {
   padding: 0.5rem 2rem;
@@ -261,11 +268,14 @@ img.avatar-image {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1060px) {
   .leftcolumn,
   .rightcolumn {
     width: 100%;
     padding: 0;
+  }
+  .no {
+    display: none;
   }
 }
 

@@ -1,7 +1,8 @@
 # Environnement virtuel
 blog_env/
 venv/
-
+.env/ 
+# .env/ est inclus pour ignorer les fichiers de configuration des variables d'environnement créés par virtualenvwrapper
 # Cache de Python
 __pycache__/
 *.py[cod]
