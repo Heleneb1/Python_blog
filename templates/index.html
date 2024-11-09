@@ -3,50 +3,36 @@
 {% load posts_extras %}
 {% block content %}
 
-<!-- <form action="{% url 'logout' %}" method="post">
-  {% csrf_token %}
-  <button class="deconnection" type="submit">Se déconnecter</button>
-</form> -->
-
-
 {% if messages %}
 {% for message in messages %}
-<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} " style="color: white;">
+<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" style="color: white;">
   {{ message }}
 </div>
 {% endfor %}
 {% endif %}
 
-<!-- <div class="new-post">
-  <a href="{% url 'create' %}" class="btn">Create a new post</a>
-</div> -->
-
 <div class="home">
-
   <img src="{% static 'assets/avatar.jpg' %}" alt="avatar" class="avatar-image" />
   <div class="introduction">
     <h2>HeleneB's Blog</h2>
     <p>Bienvenue sur ce blog,<br> un espace d'exploration et de partage d'idées,<br> où chaque pas compte pour avancer.
     </p>
     <p>Ce blog est dédié à mon parcours d'apprentissage en Python et Django. Ici, je partage des astuces, des projets,
-      et
-      des leçons tirées de mes expériences, un peu comme un journal de bord technique. Si toi aussi tu es passionné(e)
-      par
-      le développement web et curieux d'en apprendre plus sur ces technologies, j'espère que tu trouveras ici des
-      ressources utiles et inspirantes !</p>
+      et des leçons tirées de mes expériences, un peu comme un journal de bord technique. Si toi aussi tu es
+      passionné(e) par le développement web et curieux d'en apprendre plus sur ces technologies, j'espère que tu
+      trouveras ici des ressources utiles et inspirantes !</p>
   </div>
 </div>
-<div class="row">
 
+<div class="row">
   <div class="leftcolumn">
-    {% for post in posts reversed %}
+    {% for post in page_obj %}
     <div class="card">
       <a href="{% url 'post' post.id %}" style="text-decoration: none; color: black">
         <h2>{{ post.title }}</h2>
-        <h5>{{ post.created_at }}</h5>
         <p>{{ post.content|truncatewords:20 }}</p>
         <p>Posté par : {% get_post_display user=user %}</p>
-
+        <p>{{ post.created_at|get_posted_at_display }}</p>
       </a>
       <div class="button-group">
         <a href="{% url 'update_post' pk=post.id %}" class="btn-edit">Edit</a>
@@ -55,6 +41,20 @@
     </div>
     {% endfor %}
   </div>
+
+  <span>
+    {% if page_obj.has_previous %}
+    <a href="?page=1">« première</a>
+    <a href="?page={{ page_obj.previous_page_number }}">précédente</a>
+    {% endif %}
+
+    <span>Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}.</span>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">suivante</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">dernière »</a>
+    {% endif %}
+  </span>
 </div>
 
 {% endblock %}

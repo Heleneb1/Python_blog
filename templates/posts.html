@@ -2,15 +2,12 @@
 {% load posts_extras %}
 {% block content %}
 
-<!-- <div class="header">
-  <h2><a href=" /">HeleneB's Blog</a></h2>
-</div> -->
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
       <h1>{{ posts.title }}</h1>
-      <h5>{{ posts.created_at }}</h5>
       <p>Posté par : {% get_post_display user=user %}</p>
+      <p> {{ posts.created_at|get_posted_at_display }}</p>
       {% if posts.photo and posts.photo.image %}
       <img src="{{ posts.photo.image.url }}" alt="{{ posts.photo.caption }}" style="max-width: 100%;">
       {% endif %}
@@ -20,4 +17,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}

@@ -9,6 +9,8 @@ body {
   margin: 0;
   line-height: 1.6;
 }
+
+/* Home section */
 .home {
   color: white;
   display: flex;
@@ -19,12 +21,7 @@ body {
   height: 30rem;
   border: 1px double white;
 }
-/* .row {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
+
 /* Sidebar */
 .sidebar {
   height: 100%;
@@ -117,10 +114,9 @@ footer {
   color: white;
   text-align: center;
   padding: 10px 0;
-  position: fixed;
-  width: calc(100% - 220px); /* Largeur du footer ajustée */
-  bottom: 0;
+  width: calc(100% - 220px);
   margin-left: 220px;
+  margin-top: 3rem;
 }
 
 /* Post Detail Styles */

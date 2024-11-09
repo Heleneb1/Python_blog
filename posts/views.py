@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.views.generic import View
 from django.conf import settings
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 
@@ -16,8 +17,13 @@ from django.db.models import Q
 
 @login_required(login_url='login')
 def index(request):
-    posts = Post.objects.all()
-    return render(request, 'index.html', {'posts': posts})
+    posts = Post.objects.all().order_by('-created_at') # Récupère tous les posts et les trie par date de création
+    paginator = Paginator(posts, 4)  # Affiche 4 posts par page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {'page_obj': page_obj}
+    return render(request, 'index.html', context=context)
+
 
 
 
