@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Suivre des utilisateurs</h2>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Confirmer</button>
-</form>
-
-{% endblock content %}
+<div class="container">
+    <h2>Suivre des utilisateurs</h2>
+    <form method="post" class="form-follow-users">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn-edit" type="submit">Confirmer</button>
+    </form>
+</div>
+{% endblock %}

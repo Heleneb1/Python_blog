@@ -6,7 +6,8 @@ body {
   font-family: "Arial", sans-serif;
   padding: 0;
   background: #130101;
-  margin: 0;
+  /* margin: 0; */
+  margin-left: 230px;
   line-height: 1.6;
 }
 
@@ -40,7 +41,7 @@ body {
 
 /* Contenu principal ajusté pour prendre en compte la sidebar */
 .content {
-  margin-left: 250px; /* Correspond à la largeur de la sidebar */
+  /* margin-left: 250px; Correspond à la largeur de la sidebar */
   padding: 20px;
 }
 
@@ -69,6 +70,9 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
   margin-bottom: 7rem;
+}
+.container {
+  min-height: 378px;
 }
 .introduction {
   color: white;
@@ -114,8 +118,8 @@ footer {
   color: white;
   text-align: center;
   padding: 10px 0;
-  width: calc(100% - 220px);
-  margin-left: 220px;
+  width: 100%;
+  /* margin-left: 220px; */
   margin-top: 3rem;
 }
 
@@ -265,6 +269,11 @@ img.avatar-image {
   /* height: 200px; */
   width: 200px;
   margin-bottom: 20px;
+}
+.form-follow-users {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 /* Responsive Design */
