@@ -192,22 +192,9 @@ def photo_upload(request):
 
 
 
-# def search(request):
-#     query = request.GET.get('q') # Récupère la requête de recherche
-#     posts = Post.objects.filter(
-#         Q(title__icontains=query) | Q(content__icontains=query) # Recherche dans le titre et le contenu
-#     )
-#     return render(request, 'index.html', {'posts': posts})
-
 def search(request):
-    query = request.GET.get('q')  # Récupère la requête de recherche
+    query = request.GET.get('q') # Récupère la requête de recherche
     posts = Post.objects.filter(
-        Q(title__icontains=query) | Q(content__icontains=query)  # Recherche dans le titre et le contenu
-    ).order_by('-created_at')  # Tri les résultats par date de création
-
-    paginator = Paginator(posts, 4)  # Affiche 4 résultats par page
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-
-    context = {'page_obj': page_obj, 'query': query}
-    return render(request, 'index.html', context)
+        Q(title__icontains=query) | Q(content__icontains=query) # Recherche dans le titre et le contenu
+    )
+    return render(request, 'index.html', {'posts': posts})

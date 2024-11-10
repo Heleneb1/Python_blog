@@ -66,7 +66,6 @@ class User(AbstractUser):
 # >>> User.objects.create_user(username='toto', password='S3cret!', role='CREATOR')
 # <User: toto>
 #exit() pour quitter le shell
-
 class Photo(models.Model):
     image = models.ImageField(upload_to='photos/')
     caption = models.CharField(max_length=300)
