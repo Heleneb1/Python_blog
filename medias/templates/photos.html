@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center;">
+    <h1>All Photos</h1>
+
+    <div class="photo-gallery">
+        {% for photo in photos %}
+        <div class="photo-item">
+            <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" style="max-width: 300px; height: auto;">
+            <p style="color: white;">{{ photo.caption }}</p>
+        </div>
+        {% empty %}
+        <p>No photos uploaded yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

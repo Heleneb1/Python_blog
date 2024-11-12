@@ -34,6 +34,7 @@
     </form>
     <p><a href="{% url 'index' %}">Accueil</a></p>
     {% if perms.posts.add_post %}
+    <!-- <p><a href="{% url 'photo_view' %}">voir la photo-gallery</a></p> --> <!--ceci est un test  -->
     <p><a href="{% url 'photo_upload' %}">Téléverser une photo</a></p>
     <p><a href="{%url 'create'%}"> Créer un post</a></p>
     {% endif %}

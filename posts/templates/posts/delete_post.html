@@ -5,7 +5,7 @@
   <p><strong>{{ post.title }}</strong></p>
   <form method="POST">
     {% csrf_token %}
-    <button type="submit">Confirmer la suppression</button>
+    <button class="btn-delete" type="submit">Confirmer la suppression</button>
     <a href="{% url 'index' %}">Annuler</a>
   </form>
 </div>
