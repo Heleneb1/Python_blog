@@ -6,7 +6,8 @@
   <div class="leftcolumn">
     <div class="card">
       <h1>{{ posts.title }}</h1>
-      <p>Posté par : {% get_post_display user=user %}</p>
+      <p>Posté par : {% get_post_display user=posts.creator %}</p>
+
       <p> {{ posts.created_at|get_posted_at_display }}</p>
       {% if posts.photo and posts.photo.image %}
       <img src="{{ posts.photo.image.url }}" alt="{{ posts.photo.caption }}" style="max-width: 100%;">

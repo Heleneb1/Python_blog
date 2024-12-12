@@ -283,7 +283,7 @@ img.avatar-image {
     width: 100%;
     padding: 0;
   }
-  .no {
+  span.no {
     display: none;
   }
 }
