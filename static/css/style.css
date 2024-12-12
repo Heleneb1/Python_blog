@@ -6,9 +6,9 @@ body {
   font-family: "Arial", sans-serif;
   padding: 0;
   background: #130101;
-  /* margin: 0; */
-  margin-left: 230px;
-  line-height: 1.6;
+  margin: 0;
+  /* margin-left: 230px;
+  line-height: 1.6; */
 }
 
 /* Home section */
@@ -41,7 +41,8 @@ body {
 
 /* Contenu principal ajusté pour prendre en compte la sidebar */
 .content {
-  /* margin-left: 250px; Correspond à la largeur de la sidebar */
+  margin-left: 230px;
+  line-height: 1.6;
   padding: 20px;
 }
 
