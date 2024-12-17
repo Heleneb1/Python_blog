@@ -5,7 +5,7 @@
 
 {% if messages %}
 {% for message in messages %}
-<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" style="color: white;">
+<div style="color: white;">
   {{ message }}
 </div>
 {% endfor %}
@@ -34,11 +34,16 @@
         <h2>{{ post.title }}</h2>
         <p>{{ post.content|truncatewords:20 }}</p>
         <p>Posté par : {% get_post_display user=post.creator %}</p>
-        <p>{{ post.created_at|get_posted_at_display }}</p>
+        <p> {{ post.created_at|get_posted_at_display }}</p>
+
       </a>
       <div class="button-group">
+        {% if user == post.creator or user.is_superuser %}
         <a href="{% url 'update_post' pk=post.id %}" class="btn-edit">Edit</a>
+        {% endif %}
+        {% if user.is_superuser %}
         <a href="{% url 'delete_post' pk=post.id %}" class="btn-delete">Delete</a>
+        {% endif %}
       </div>
     </div>
     {% endfor %}

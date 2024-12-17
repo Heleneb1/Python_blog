@@ -3,20 +3,37 @@
 {% block content %}
 
 <div class="row">
-  <div class="leftcolumn">
-    <div class="card">
-      <h1>{{ posts.title }}</h1>
-      <p>Posté par : {% get_post_display user=posts.creator %}</p>
+    <div class="leftcolumn">
+        <div class="card">
+            <h1>{{ post.title }}</h1>
+            <p>Posté par : {% get_post_display user=post.creator %}</p>
 
-      <p> {{ posts.created_at|get_posted_at_display }}</p>
-      {% if posts.photo and posts.photo.image %}
-      <img src="{{ posts.photo.image.url }}" alt="{{ posts.photo.caption }}" style="max-width: 100%;">
-      {% endif %}
-      <div class="content">
-        <pre><code>{{ posts.content }}</code></pre>
-      </div>
+            <p> {{ post.created_at|get_posted_at_display }}</p>
+
+            {% if post.photos %}
+            <div class="post-photo">
+                <img src="{{ post.photos.image.url }}" alt="{{ post.photos.caption }}" style="max-width: 300px;">
+            </div>
+
+            {% if post.photo.caption %}
+            <p>Légende : {{ post.photos.caption }}</p>
+            {% endif %}
+
+            {% else %}
+            <p>Aucune image associée à ce post.</p>
+            {% endif %}
+
+            <div id="content">
+                <!-- Affiche le contenu Markdown transformé en HTML -->
+                {{ content_convert|safe }}
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var simplemde = new SimpleMDE({ element: document.getElementsById("content") });
+    });
+</script>
 
 {% endblock %}

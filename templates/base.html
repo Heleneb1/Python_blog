@@ -8,6 +8,9 @@
   <title>{% block title %}HeleneB's Blog{% endblock %}</title>
   <link rel="icon" href="{% static 'assets/favicon.ico' %}" type="image/x-icon" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
   {% block head %}{% endblock %}
   <!-- Garder un bloc pour des scripts ou styles supplémentaires si nécessaire -->
 </head>
@@ -26,7 +29,7 @@
     {% if user.profile_picture %}
     <img class="profile_picture" src="{{ user.profile_picture.url }}" alt="Profile Picture">
     {% else %}
-    <img class="profile_picture" src="{% static 'assets/default_profile.png' %}" alt="Default Profile Picture">
+    <img class="profile_picture" src="{% static 'assets/default_profile.jpg' %}" alt="Default Profile Picture">
     {% endif %}
     <form method="get" action="{% url 'search' %}" style="display: flex; align-items: center;">
       <input type="text" name="q" placeholder="Rechercher un post" aria-label="Search"
@@ -34,9 +37,13 @@
       <button type="submit" style="padding: 5px;">🔍</button>
     </form>
     <p><a href="{% url 'index' %}">Accueil</a></p>
-    {% if perms.posts.add_post %}
+
     <!-- <p><a href="{% url 'photo_view' %}">voir la photo-gallery</a></p> --> <!--ceci est un test  -->
+    {% if user.is_superuser %}
     <p><a href="{% url 'photo_upload' %}">Téléverser une photo</a></p>
+    <p><a href="{% url 'photo_view' %}">Galerie</a></p>
+    {% endif %}
+    {% if perms.posts.add_post %}
     <p><a href="{%url 'create'%}"> Créer un post</a></p>
     {% endif %}
     <p><a href="{% url 'follow_users' %}">Suivre des utilisateurs</a></p>

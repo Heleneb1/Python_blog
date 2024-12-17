@@ -94,8 +94,8 @@ body {
 }
 
 pre {
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
+  background-color: #075e81;
+  border: 1px solid #075e81;
   border-radius: 5px;
   padding: 15px;
   overflow-x: auto;
@@ -103,11 +103,11 @@ pre {
 }
 
 code {
-  color: rgb(1, 23, 55);
-  background-color: #f4f4f4;
+  color: rgb(239, 240, 244);
+  background-color: #075e81;
   padding: 2px 4px;
   border-radius: 3px;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 form .input-group {
   display: flex;
@@ -175,7 +175,9 @@ footer {
   justify-content: flex-start;
   align-items: center;
 }
-h2 {
+h1,
+h2,
+h3 {
   color: #065d54;
   font-style: italic;
 }

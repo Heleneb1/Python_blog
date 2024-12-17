@@ -1,17 +1,33 @@
-{% extends 'base.html' %}
+<h2>Photos</h2>
+<ul>
+    {% for photo in photos %}
+    <li>
+        <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" width="100">
+        <p>{{ photo.caption }}</p>
+    </li>
+    {% empty %}
+    <li>Aucune photo disponible.</li>
+    {% endfor %}
+</ul>
 
-{% block content %}
+<h2>Photos des Utilisateurs</h2>
+<ul>
+    {% for photo_user in photo_users %}
+    <li>
+        <img src="{{ photo_user.image.url }}" alt="Photo utilisateur" width="100">
+    </li>
+    {% empty %}
+    <li>Aucune photo utilisateur disponible.</li>
+    {% endfor %}
+</ul>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Upload a photo</h2>
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Upload</button>
-            </form>
-        </div>
-    </div>
-</div>
-{% endblock %}
+<h2>Photos des Posts</h2>
+<ul>
+    {% for photo_post in photo_posts %}
+    <li>
+        <img src="{{ photo_post.image.url }}" alt="Photo post" width="100">
+    </li>
+    {% empty %}
+    <li>Aucune photo de post disponible.</li>
+    {% endfor %}
+</ul>
