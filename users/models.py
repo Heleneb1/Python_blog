@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser,Group
 from django.conf import settings
-from datetime import datetime
+from django.utils import timezone
 from PIL import Image
 
 class User(AbstractUser):
@@ -41,23 +41,23 @@ class User(AbstractUser):
 # <User: toto>
 #exit() pour quitter le shell
 
-class Photo(models.Model):
-    image = models.ImageField(upload_to='photos/')
-    caption = models.CharField(max_length=300)
-    created_at = models.DateTimeField(default=datetime.now, blank=True)
-    uploader = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True) # L'utilisateur qui a téléchargé la photo est stocké ici
+# class Photo_User(models.Model):
+#     image = models.ImageField(upload_to='photos/')
+#     caption = models.CharField(max_length=300)
+#     created_at = models.DateTimeField(default=timezone.now, blank=True)
+#     uploader = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True) # L'utilisateur qui a téléchargé la photo est stocké ici
     
-    IMAGE_MAX_SIZE= (300, 300)# Redimensionner l'image en 300x300
-    def resize_image(self):
-        # Redimensionner l'image
-        image = Image.open(self.image)
-        image.thumbnail(self.IMAGE_MAX_SIZE) 
+#     IMAGE_MAX_SIZE= (300, 300)# Redimensionner l'image en 300x300
+#     def resize_image(self):
+#         # Redimensionner l'image
+#         image = Image.open(self.image)
+#         image.thumbnail(self.IMAGE_MAX_SIZE) 
 
-        # Enregistrer l'image redimensionnée
-        image.save(self.image.path)
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        self.resize_image()
+#         # Enregistrer l'image redimensionnée
+#         image.save(self.image.path)
+#     def save(self, *args, **kwargs):
+#         super().save(*args, **kwargs)
+#         self.resize_image()
 
-    def __str__(self):
-        return self.caption
+#     def __str__(self):
+#         return self.caption

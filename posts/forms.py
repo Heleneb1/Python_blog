@@ -30,3 +30,14 @@ class FollowUsersForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ['follows']
+
+from django import forms
+from .models import Post, Photo
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content', 'photos']
+        widgets = {
+            'content': forms.Textarea(attrs={'placeholder': 'Saisis ton contenu en Markdown...'}),
+        }

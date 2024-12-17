@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 from . import forms
 from .models import Photo
+from medias.models import Photo_Post, Photo_User
 
 
-@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def photo_upload(request):
     form = forms.PhotoForm()
     if request.method == 'POST':
@@ -18,10 +19,19 @@ def photo_upload(request):
             return redirect('index')
     return render(request, 'photo_upload.html', context={'form': form})
 
-@login_required(login_url='login')
+@user_passes_test(lambda u: u.is_superuser)
 def photo_view(request):
-    photos= Photo.objects.all()
 
-    return render(request, 'photos.html',{'photos':photos})
+    photos = Photo.objects.all()
+    photo_users = Photo_User.objects.all()
+    photo_posts = Photo_Post.objects.all()
+
+    context = {
+        'photos': photos,
+        'photo_users': photo_users,
+        'photo_posts': photo_posts,
+    }
+    return render(request, 'photos.html', context)
+
 
 

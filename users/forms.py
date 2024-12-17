@@ -4,11 +4,15 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 from . import models
+from medias.models import Photo_User
+
 
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=63, label='Nom d’utilisateur')
-    password = forms.CharField(max_length=63, widget=forms.PasswordInput, label='Mot de passe')
+    password = forms.CharField(max_length=63, widget=forms.PasswordInput(), label='Mot de passe')
+
+    
 
 class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -24,7 +28,7 @@ class ProfileUpdateForm(UserChangeForm):
 
 class PhotoForm(forms.ModelForm):
     class Meta:
-        model= models.Photo
+        model = Photo_User
         fields = ['image', 'caption']
 
 class FollowUsersForm(forms.ModelForm):

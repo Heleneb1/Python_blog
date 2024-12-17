@@ -13,26 +13,60 @@
 
         <!-- Champ pour le titre -->
         <div class="input-group">
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" required />
+          <label for="title">Titre</label>
+          <input type="text" name="title" id="title" placeholder="Titre de votre post" required />
         </div>
 
-        <!-- Champ pour le contenu -->
+        <!-- Champ pour le contenu avec Markdown -->
         <div class="input-group">
-          <label for="content">Content</label>
-          <textarea rows="10" cols="100" name="content" id="content" required></textarea>
+          <label for="content">Contenu</label>
+          <textarea rows="10" cols="100" name="content" id="content"
+            placeholder="Rédigez votre post ici... Vous pouvez utiliser du Markdown." required
+            style="opacity: 0;"> </textarea>
         </div>
 
         <!-- Champ pour télécharger la photo -->
-        <div class="input-group">
-          <label for="photo">Upload a photo</label>
-          <input type="file" name="photo" id="photo" accept="image/*" />
+        <div class="post-photo">
+          <img src="{{ post.photos.image.url }}" alt="{{ post.photos.caption }}" style="max-width: 300px;">
         </div>
 
+        <div class="input-group">
+          <label for="photo">Télécharger une image</label>
+          <input type="file" name="photo" id="photo" accept="image/*" />
+        </div>
+        <!-- Champ pour la légende de la photo -->
+        <label for="caption">Caption</label>
+        <input type="text" id="caption" name="caption" value="{{ post.photos.caption }}">
+
         <!-- Bouton pour soumettre le formulaire -->
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Créer</button>
       </form>
     </div>
+
+    <!-- Prévisualisation de l'image -->
+    <script>
+      document.getElementById("photo").addEventListener("change", function (event) {
+        const [file] = this.files;
+        if (file) {
+          const preview = document.createElement("img");
+          preview.src = URL.createObjectURL(file);
+          preview.style.maxWidth = "300px";
+          preview.style.marginTop = "10px";
+          const container = this.parentNode;
+          const existingPreview = container.querySelector("img");
+          if (existingPreview) container.removeChild(existingPreview);
+          container.appendChild(preview);
+        }
+      });
+    </script>
+
+    <!-- Activation de l'éditeur Markdown -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var simplemde = new SimpleMDE({ element: document.getElementById("content") });
+      });
+    </script>
+
   </div>
 </div>
 {% endblock %}
