@@ -43,3 +43,4 @@ uploads/
 # Fichiers générés par Django pour les compilations (CSS/JS)
 staticfiles/
 static/
+!static/assets/   

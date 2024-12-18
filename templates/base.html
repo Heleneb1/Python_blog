@@ -16,10 +16,18 @@
 </head>
 
 <body>
+  <!-- Bouton menu burger -->
+
   <!-- En-tête du site -->
-  <div class="header">
-    <h2><a href="/index">HeleneB's Blog</a></h2>
-  </div>
+  <nav>
+    <div class="header">
+      <h2><a href="{% url 'index' %}">HeleneB's Blog</a></h2>
+
+    </div>
+    <div class="burger-menu">
+      <span class="burger-icon">☰</span>
+    </div>
+  </nav>
 
   <div class="sidebar">
     <h2>HeleneB's Blog</h2>
@@ -38,7 +46,7 @@
     </form>
     <p><a href="{% url 'index' %}">Accueil</a></p>
 
-    <!-- <p><a href="{% url 'photo_view' %}">voir la photo-gallery</a></p> --> <!--ceci est un test  -->
+
     {% if user.is_superuser %}
     <p><a href="{% url 'photo_upload' %}">Téléverser une photo</a></p>
     <p><a href="{% url 'photo_view' %}">Galerie</a></p>
@@ -50,6 +58,9 @@
     <p><a href="{% url 'password_change' %}">Changer le mot de passe</a></p>
     <p><a href="{%url 'update_profile' %}">Modifier mon compte</a></p>
     <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+    <span class="mobile-footer">
+      <div style="text-align: center;">&copy; 2024 HeleneB's Blog created<br> with Python and Django</div>
+    </span>
     {% else %}
     <p>Bienvenue, invité !<br> Veuillez vous connecter.</p>
     <p><a href="{% url 'login' %}">Se connecter</a></p>
@@ -69,6 +80,7 @@
   <footer>
     <div>&copy; 2024 HeleneB's Blog created with Python and Django</div>
   </footer>
+  <script src="{% static 'js/menu.js' %}"></script>
 </body>
 
 </html>

@@ -6,6 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 from django.conf import settings
 
+
+def login_view(request):
+    messages.info(request, "Votre session a expiré, veuillez vous reconnecter.")
 class LoginPage(View):
     form_class = forms.LoginForm
     template_name = 'users/login.html'
