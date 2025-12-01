@@ -4,7 +4,7 @@ from django.utils import timezone
 
 
 
-# python -m pip install markdown2 hors venv
+# python -m pip install markdown hors venv    
 import markdown2
 
 
@@ -16,8 +16,8 @@ class Post(models.Model):
     photos = models.ForeignKey('medias.Photo_Post', on_delete=models.CASCADE, null=True, blank=True, related_name='post_photos')
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     creator = models.ForeignKey(
-    settings.AUTH_USER_MODEL,
-    on_delete=models.SET_NULL,
+    settings.AUTH_USER_MODEL, 
+    on_delete=models.SET_NULL, 
     null=True,  # Keep null=True if you want to allow posts without a specific creator
     blank=False,  # Prevents blank values in forms
     related_name='created_posts'
@@ -28,11 +28,11 @@ class Post(models.Model):
 
     def content_as_html(self):
         """Convertir le contenu Markdown en HTML"""
-    convert_content = markdown2.markdown(self.content, extras=['fenced-code-blocks', 'tables', 'highlighting'])
+        convert_content = markdown2.markdown(self.content, extras=['fenced-code-blocks', 'tables', 'highlighting'])
         return convert_content 
     def __str__(self):
         return self.title
-
+    
 
 
 class PostContributor(models.Model):
