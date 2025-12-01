@@ -28,8 +28,8 @@ class Post(models.Model):
 
     def content_as_html(self):
         """Convertir le contenu Markdown en HTML"""
-        content_convert = markdown2.markdown(self.content, extras=['fenced-code-blocks', 'tables'])
-        return content_convert
+    convert_content = markdown2.markdown(self.content, extras=['fenced-code-blocks', 'tables', 'highlighting'])
+        return convert_content 
     def __str__(self):
         return self.title
 

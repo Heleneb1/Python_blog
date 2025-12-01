@@ -1,8 +1,15 @@
 asgiref==3.8.1
 Django==5.1.2
+latex2mathml==3.77.0
+manage.py==0.2.10
+Markdown==3.7
 markdown2==2.5.2
 pillow==11.0.0
+Pygments==2.18.0
 python-dotenv==1.0.1
+PyYAML==6.0.2
+six==1.17.0
 sqlparse==0.5.1
-typing_extensions==4.12.2
+svgwrite==1.4.3
 tzdata==2024.2
+wavedrom==2.0.3.post3

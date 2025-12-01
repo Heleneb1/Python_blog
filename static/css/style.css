@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -334,13 +335,6 @@ img.avatar-image {
     width: 100%;
     height: auto;
   }
-  .introduction{
-      margin:0;
-      padding-top:0;
-  }
-  .introduction h2{
-      margin-top:0;
-  }
 }
 /* Styles pour le menu burger */
 .burger-menu {
@@ -383,3 +377,4 @@ img.avatar-image {
     display: block;
   }
 }
+>>>>>>> 2edabf8b9b615805ec7d4f0ea7b5a781adb08b76

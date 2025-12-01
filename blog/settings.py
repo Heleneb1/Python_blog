@@ -1,3 +1,4 @@
+
 """
 Django settings for blog project.
 
@@ -12,48 +13,40 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv 
 # Si tu utilises un fichier .env
 
 load_dotenv()
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent  # Assure-toi que BASE_DIR est bien défini
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-SECRET_KEY = os.getenv('SECRET_KEY')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['heleneb.pythonanywhere.com']
-
+ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'medias',
     'posts',
     'users',
+    'medias',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    
 ]
 
 MIDDLEWARE = [
@@ -64,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'blog.middleware.user_session.UserSessionMiddleware',
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -144,10 +138,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+   os.path.join(BASE_DIR, 'static')
 ]
 # Ajoute cette ligne pour définir où collecter les fichiers statiques
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -163,7 +156,6 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'login'
 
-
 # Durée de session en secondes
 SESSION_COOKIE_AGE = 5400 #soit 3600+1800 sec
 # Supprimer la session lorsqu'un utilisateur ferme le navigateur
@@ -175,3 +167,4 @@ SESSION_SAVE_EVERY_REQUEST = True
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'  # Utilisation de BASE_DIR pour une meilleure portabilité
+

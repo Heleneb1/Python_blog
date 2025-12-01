@@ -9,8 +9,10 @@ from django.db.models import Q
 from django.utils import timezone
 import markdown2
 
+import markdown2
 
-@login_required(login_url='login')
+
+
 def index(request):
     posts = Post.objects.all().order_by('-created_at')
     # Ajouter une conversion en HTML tronqué pour chaque post
@@ -27,8 +29,12 @@ def index(request):
 
 def post(request, pk):
     post_instance = get_object_or_404(Post, id=pk)
-    content_convert = post_instance.content_as_html()
-    return render(request, 'posts/post.html', {'post': post_instance, 'content_convert': content_convert})
+    convert_content = post_instance.content_as_html()
+    return render(request, 'posts/post.html', {'post': post_instance, 'convert_content': convert_content})
+
+    # convert_content = markdown2.markdown(post_instance.content)
+    # return render(request, 'posts/post.html', {'post': post_instance, 'convert_content': convert_content})
+
 
 @login_required
 @permission_required('posts.add_post', raise_exception=True)
