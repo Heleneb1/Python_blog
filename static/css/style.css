@@ -38,6 +38,9 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
+.mobile-footer {
+  display: none;
+}
 
 /* Contenu principal ajusté pour prendre en compte la sidebar */
 .content {
@@ -181,7 +184,8 @@ h3 {
   color: #065d54;
   font-style: italic;
 }
-span {
+span.no,
+span.pagination-info {
   color: #ddd;
   font-style: italic;
 }
@@ -325,5 +329,57 @@ img.avatar-image {
   footer {
     width: 100%;
     margin-left: 0;
+  }
+  img.avatar-image {
+    width: 100%;
+    height: auto;
+  }
+  .introduction{
+      margin:0;
+      padding-top:0;
+  }
+  .introduction h2{
+      margin-top:0;
+  }
+}
+/* Styles pour le menu burger */
+.burger-menu {
+  display: none; /* Caché par défaut sur desktop */
+}
+
+/* Styles responsive */
+@media screen and (max-width: 768px) {
+  .burger-menu {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  span.burger-icon {
+    font-size: 30px;
+    color: #fff;
+  }
+
+  .sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 100%;
+    /* background-color: white; */
+    z-index: 999;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .sidebar.active {
+    display: block;
+  }
+  .mobile-footer {
+    padding-top: 2rem;
+    display: block;
   }
 }

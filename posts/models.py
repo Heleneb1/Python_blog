@@ -4,8 +4,9 @@ from django.utils import timezone
 
 
 
-# python -m pip install markdown hors venv
+# python -m pip install markdown2 hors venv
 import markdown2
+
 
 
 
@@ -27,7 +28,7 @@ class Post(models.Model):
 
     def content_as_html(self):
         """Convertir le contenu Markdown en HTML"""
-        content_convert = markdown2.markdown(self.content, extras=['fenced-code-blocks', 'tables', 'highlighting'])
+        content_convert = markdown2.markdown(self.content, extras=['fenced-code-blocks', 'tables'])
         return content_convert
     def __str__(self):
         return self.title
@@ -42,4 +43,3 @@ class PostContributor(models.Model):
     class Meta:
         unique_together = ('contributor', 'post')
         verbose_name_plural = 'Post Contributors'
-

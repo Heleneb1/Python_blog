@@ -32,7 +32,7 @@
     <div class="card">
       <a href="{% url 'post' post.id %}" style="text-decoration: none; color: black">
         <h2>{{ post.title }}</h2>
-        <p>{{ post.content|truncatewords:20 }}</p>
+         <p>{{ post.converted_content|safe }}</p>
         <p>Posté par : {% get_post_display user=post.creator %}</p>
         <p> {{ post.created_at|get_posted_at_display }}</p>
 

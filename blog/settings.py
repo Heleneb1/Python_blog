@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+# Si tu utilises un fichier .env
+
+load_dotenv()
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent  # Assure-toi que BASE_DIR est bien défini
@@ -24,12 +28,11 @@ DATABASES = {
     }
 }
 
-
+SECRET_KEY = os.getenv('SECRET_KEY')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n=%t39r=s9e_=zi^2oq)@1yo-duu%wl^db(+3p_kki%3qyc0s$'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -159,6 +162,15 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'login'
+
+
+# Durée de session en secondes
+SESSION_COOKIE_AGE = 5400 #soit 3600+1800 sec
+# Supprimer la session lorsqu'un utilisateur ferme le navigateur
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Réactiver la session si l'utilisateur est actif
+SESSION_SAVE_EVERY_REQUEST = True
 
 MEDIA_URL = '/media/'
 
