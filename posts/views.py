@@ -12,7 +12,7 @@ from django.utils import timezone
 import markdown2
 
 
-@login_required(login_url='login')
+
 def index(request):
     posts = Post.objects.all().order_by('-created_at')
     # Ajouter une conversion en HTML tronqué pour chaque post

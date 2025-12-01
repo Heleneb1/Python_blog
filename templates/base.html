@@ -39,11 +39,6 @@
     {% else %}
     <img class="profile_picture" src="{% static 'assets/default_profile.jpg' %}" alt="Default Profile Picture">
     {% endif %}
-    <form method="get" action="{% url 'search' %}" style="display: flex; align-items: center;">
-      <input type="text" name="q" placeholder="Rechercher un post" aria-label="Search"
-        style="padding: 5px; margin-right: 5px;">
-      <button type="submit" style="padding: 5px;">🔍</button>
-    </form>
     <p><a href="{% url 'index' %}">Accueil</a></p>
 
 
@@ -66,6 +61,12 @@
     <p><a href="{% url 'login' %}">Se connecter</a></p>
     <p><a href="{% url 'signup' %}">S'inscrire</a></p>
     {% endif %}
+    <form method="get" action="{% url 'search' %}" style="display: flex; align-items: center;">
+      <input type="text" name="q" placeholder="Rechercher un post" aria-label="Search"
+        style="padding: 5px; margin-right: 5px;">
+      <button type="submit" style="padding: 5px;">🔍</button>
+    </form>
+
   </div>
 
   <!-- Contenu principal -->
