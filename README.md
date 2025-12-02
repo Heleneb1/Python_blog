@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Heleneb1/blog/static/assets/banner.png" alt="Blog Banner" />
+  <img src="https://raw.githubusercontent.com/Heleneb1/Python_blog/main/blog/docs/readme_banner.png" alt="Blog Banner" />
 </p>
+
 
 # HeleneB's Blog
 
